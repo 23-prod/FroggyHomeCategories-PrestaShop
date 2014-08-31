@@ -4,6 +4,6 @@
 	"need_instance": 0,
     "hooks": { "all" : [ "Header", "Home" ] },
     "configurations" : {
-        "FHC_CAT_SELECTION" : ""
+        "FHC_CAT_SELECTION" : "[0]"
     }
 }

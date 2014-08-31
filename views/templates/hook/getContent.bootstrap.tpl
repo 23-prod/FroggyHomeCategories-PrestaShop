@@ -22,31 +22,3 @@
     <div class="module_confirmation conf confirm alert alert-success">{l s='The configuration has been successfully updated.' mod='froggyhomecategories'}</div>
 {/if}
 
-
-{*
-<div class="bootstrap">
-    <fieldset id="froggyhomecategories-fieldset">
-            <legend><img src="{$froggyhomecategories.module_dir}logo.png" alt="" width="16" />{l s='Froggy Home Categories' mod='froggyhomecategories'}</legend>
-            <div class="panel col-lg-5">
-                <div id="froggyhomecategories-introduction-configuration">
-
-
-                    <form action="" method="POST" class="defaultForm form-horizontal">
-                        <div class="panel-heading">
-                            {l s='Configuration' mod='froggyhomecategories'}
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-lg-3">
-                                {l s='Select categories to display on home:' mod='froggyhomecategories'}
-                            </label>
-                            <div class="col-lg-9">
-
-                            </div>
-                        </div>
-                        <p align="center"><input type="submit" class="btn btn-default" name="froggyhomecategories-submit" id="froggyhomecategories-submit" value="{l s='Validate' mod='froggyhomecategories'}" /></p>
-                    </form>
-                </div>
-            </div>
-    </fieldset>
-</div>
-*}

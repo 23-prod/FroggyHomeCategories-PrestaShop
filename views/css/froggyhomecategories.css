@@ -17,3 +17,7 @@
 *  @copyright  2013-2014 Froggy Commerce
 */
 
+ul.nav-tabs li { display:inline; list-style:none; margin-right:20px; font-weight:bold }
+ul.nav-tabs li.active { border-bottom:1px solid black }
+.tab-content ul { display:none; list-style:none }
+.tab-content ul.active { display:block }

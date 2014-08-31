@@ -23,7 +23,7 @@ class FroggyHomeCategoriesHookGetContentProcessor extends FroggyHookProcessor
 {
 	public function processConfiguration()
 	{
-		if (Tools::isSubmit('froggyhomecategories-submit'))
+		if (Tools::isSubmit('FHC_CAT_SELECTION'))
 		{
 			Configuration::updateValue('FHC_CAT_SELECTION', json_encode(Tools::getValue('FHC_CAT_SELECTION')));
 			$this->confirmation = 'ok';
@@ -37,7 +37,8 @@ class FroggyHomeCategoriesHookGetContentProcessor extends FroggyHookProcessor
 			'form' => array(
 				'legend' => array(
 					'title' => $this->module->l('Froggy Home Categories configuration'),
-					'icon' => 'icon-envelope'
+					'image' => '../modules/'.$this->module->name.'/logo.gif',
+					'icon' => 'icon-wrench'
 				),
 				'input' => array(
 					array(
@@ -53,21 +54,23 @@ class FroggyHomeCategoriesHookGetContentProcessor extends FroggyHookProcessor
 						// Retrocompat 1.5 for category tree
 						'values' => array(
 							'trads' => array(
-								'Root' => Category::getTopCategory(),
-								'selected' => $this->l('Selected'),
-								'Collapse All' => $this->l('Collapse All'),
-								'Expand All' => $this->l('Expand All'),
-								'Check All' => $this->l('Check All'),
-								'Uncheck All' => $this->l('Uncheck All')
+								'Root' => Category::getTopCategory()->name,
+								'selected' => $this->module->l('Selected'),
+								'Collapse All' => $this->module->l('Collapse All'),
+								'Expand All' => $this->module->l('Expand All'),
+								'Check All' => $this->module->l('Check All'),
+								'Uncheck All' => $this->module->l('Uncheck All')
 							),
-							'selected_cat' => $selected_categories,
+							'selected_cat' => json_decode(Configuration::get('FHC_CAT_SELECTION')),
 							'input_name' => 'FHC_CAT_SELECTION[]',
 							'use_radio' => false,
 							'use_search' => false,
 							'disabled_categories' => array(),
 							'top_category' => Category::getTopCategory(),
 							'use_context' => true,
-						)
+							'value' => json_decode(Configuration::get('FHC_CAT_SELECTION')),
+						),
+
 					),
 				),
 				'submit' => array('title' => $this->module->l('Save'))
@@ -77,6 +80,7 @@ class FroggyHomeCategoriesHookGetContentProcessor extends FroggyHookProcessor
 		// Build form
 		$helper = new HelperForm();
 		$helper->table = $this->module->name;
+		$helper->show_toolbar = false;
 		$helper->default_form_language = (int)Configuration::get('PS_LANG_DEFAULT');
 		$helper->allow_employee_form_lang = (int)Configuration::get('PS_BO_ALLOW_EMPLOYEE_FORM_LANG');
 		$helper->submit_action = 'froggyhomecategories-submit';
@@ -106,7 +110,7 @@ class FroggyHomeCategoriesHookGetContentProcessor extends FroggyHookProcessor
 
 		// Render form
 		$html_form = $this->module->fcdisplay(__FILE__, 'getContent.tpl');
-		if ($ps_version == '1.6')
+		if ($ps_version == '1.5' || $ps_version == '1.6')
 			$html_form .= $this->renderForm();
 
 		return $html_form;

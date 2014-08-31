@@ -16,3 +16,11 @@
  *  @author Froggy Commerce <contact@froggy-commerce.com>
  *  @copyright  2013-2014 Froggy Commerce
  */
+
+$(document).ready(function() {
+	$('ul.nav-tabs li a').click(function() {
+		$('.tab-content ul').removeClass('active');
+		$($(this).attr('href')).addClass('active');
+		return false;
+	});
+});
