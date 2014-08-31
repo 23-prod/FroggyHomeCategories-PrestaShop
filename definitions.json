@@ -1,0 +1,9 @@
+{
+	"tab" : "front_office_features",
+	"version": "1.0.0",
+	"need_instance": 0,
+    "hooks": { "all" : [ "Header", "Home" ] },
+    "configurations" : {
+        "FHC_CAT_SELECTION" : ""
+    }
+}
