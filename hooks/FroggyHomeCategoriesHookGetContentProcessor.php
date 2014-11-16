@@ -53,9 +53,6 @@ class FroggyHomeCategoriesHookGetContentProcessor extends FroggyHookProcessor
 
 		// Render form
 		$html_form = $this->module->fcdisplay(__FILE__, 'getContent.tpl');
-		if ($ps_version == '1.5' || $ps_version == '1.6')
-			$html_form .= $this->renderForm();
-
-		return $html_form;
+		return $this->renderForm();
 	}
 }
