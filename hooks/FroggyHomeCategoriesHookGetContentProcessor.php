@@ -32,64 +32,7 @@ class FroggyHomeCategoriesHookGetContentProcessor extends FroggyHookProcessor
 
 	public function renderForm()
 	{
-		// Define form
-		$fields_form = array(
-			'form' => array(
-				'legend' => array(
-					'title' => $this->module->l('Froggy Home Categories configuration'),
-					'image' => '../modules/'.$this->module->name.'/logo.gif',
-					'icon' => 'icon-wrench'
-				),
-				'input' => array(
-					array(
-						'type' => 'categories',
-						'label' => $this->module->l('Select categories to display on home:'),
-						'name' => 'FHC_CAT_SELECTION',
-						'tree' => array(
-							'use_search' => false,
-							'id' => 'categoryBox',
-							'use_checkbox' => true,
-							'selected_categories' => json_decode(Configuration::get('FHC_CAT_SELECTION')),
-						),
-						// Retrocompat 1.5 for category tree
-						'values' => array(
-							'trads' => array(
-								'Root' => Category::getTopCategory()->name,
-								'selected' => $this->module->l('Selected'),
-								'Collapse All' => $this->module->l('Collapse All'),
-								'Expand All' => $this->module->l('Expand All'),
-								'Check All' => $this->module->l('Check All'),
-								'Uncheck All' => $this->module->l('Uncheck All')
-							),
-							'selected_cat' => json_decode(Configuration::get('FHC_CAT_SELECTION')),
-							'input_name' => 'FHC_CAT_SELECTION[]',
-							'use_radio' => false,
-							'use_search' => false,
-							'disabled_categories' => array(),
-							'top_category' => Category::getTopCategory(),
-							'use_context' => true,
-							'value' => json_decode(Configuration::get('FHC_CAT_SELECTION')),
-						),
-
-					),
-				),
-				'submit' => array('title' => $this->module->l('Save'))
-			)
-		);
-
-		// Build form
-		$helper = new HelperForm();
-		$helper->table = $this->module->name;
-		$helper->show_toolbar = false;
-		$helper->default_form_language = (int)Configuration::get('PS_LANG_DEFAULT');
-		$helper->allow_employee_form_lang = (int)Configuration::get('PS_BO_ALLOW_EMPLOYEE_FORM_LANG');
-		$helper->submit_action = 'froggyhomecategories-submit';
-		$helper->currentIndex = $this->context->link->getAdminLink('AdminModules', false).'&configure='.$this->module->name.'&tab_module='.$this->module->tab.'&module_name='.$this->module->name;
-		$helper->token = Tools::getAdminTokenLite('AdminModules');
-		$helper->tpl_vars = array('languages' => $this->context->controller->getLanguages());
-
-		// Render form
-		return $helper->generateForm(array($fields_form));
+		return $this->module->renderCategoriesTree(Category::getRootCategory()->id, 'FHC_CAT_SELECTION', 'FHC_CAT_SELECTION');
 	}
 
 	public function run()
