@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
-	<name>froggyhistory</name>
-	<displayName><![CDATA[Froggy History]]></displayName>
-	<version><![CDATA[1.0.3]]></version>
-	<description><![CDATA[Allow you to know the different actions of each employee in the Back Office]]></description>
+	<name>froggyhomecategories</name>
+	<displayName><![CDATA[Froggy Home Categories]]></displayName>
+	<version><![CDATA[1.0.0]]></version>
+	<description><![CDATA[Allow you to display a selection of categories]]></description>
 	<author><![CDATA[Froggy Commerce]]></author>
 	<tab><![CDATA[front_office_features]]></tab>
 	<is_configurable>1</is_configurable>
