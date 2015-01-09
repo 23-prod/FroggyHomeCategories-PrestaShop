@@ -18,6 +18,9 @@
 *}
 
 <h2 align="center">{l s='Froggy Home Categories' mod='froggyhomecategories'}</h2>
-{if isset($froggyhomecategories.confirmation)}
-    <div class="conf">{l s='The configuration has been successfully updated.' mod='froggyhomecategories'}</div>
+
+{if isset($froggyhomecategories.form_result) && $froggyhomecategories.form_result === true}
+<div class="conf">{l s='The new configuration has been saved!' mod='froggyhomecategories'}</div>
 {/if}
+
+{FroggyDisplaySafeHtml s=$froggyhomecategories.helper_display}

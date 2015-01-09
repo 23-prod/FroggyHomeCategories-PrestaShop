@@ -18,10 +18,8 @@
  * @license   Unauthorized copying of this file, via any medium is strictly prohibited
  *}
 
-<h2 align="center">{l s='Froggy Home Categories' mod='froggyhomecategories'}</h2>
-
-{if isset($froggyhomecategories.form_result) && $froggyhomecategories.form_result === true}
-<div class="module_confirmation conf confirm alert alert-success">{l s='The new configuration has been saved!' mod='froggyhomecategories'}</div>
-{/if}
-
-{FroggyDisplaySafeHtml s=$froggyhomecategories.helper_display}
+<ul class="froggy-categories-tree">
+{foreach from=$categories_tree_branches item=branch}
+    <li><input type="checkbox" class="categories-tree-checkbox-{$categories_tree_id}" name="{$categories_tree_attribute_name}[]" value="{$branch.id_category}"{if $branch.checked} checked{/if} /> {$branch.name}{$branch.children}</li>
+{/foreach}
+</ul>
