@@ -19,6 +19,8 @@
 
 $(document).ready(function() {
 	$('ul.nav-tabs li a').click(function() {
+		$('ul.nav-tabs li a').removeClass('selected');
+		$(this).addClass('selected');
 		$('.tab-content ul').removeClass('active');
 		$($(this).attr('href')).addClass('active');
 		return false;
