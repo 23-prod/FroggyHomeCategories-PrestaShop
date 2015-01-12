@@ -25,7 +25,7 @@ class FroggyHomeCategoriesHookDisplayHeaderProcessor extends FroggyHookProcessor
 	{
 		// Set media (different file CSS depending on PrestaShop version)
 		$ps_version = substr(_PS_VERSION_, 0, 3);
-		$this->context->controller->addCSS($this->path.'views/css/froggyhomecategories'.($ps_version == '1.6' ? '.bootstrap' : '').'.css', 'all');
+		$this->context->controller->addCSS($this->path.'views/css/froggyhomecategories-'.$ps_version.'.css', 'all');
 		$this->context->controller->addJS($this->path.'views/js/froggyhomecategories'.($ps_version == '1.6' ? '.bootstrap' : '').'.js');
 	}
 }
