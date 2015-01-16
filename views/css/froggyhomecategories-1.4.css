@@ -17,4 +17,46 @@
 *  @copyright  2013-2014 Froggy Commerce
 */
 
-ul.nav-tabs li { display:inline; list-style:none; font-weight:bold; float: left }
+#froggyhomecategories-section p.title_block{
+	font-size: 16px;
+	font-weight: bold;
+	text-transform: uppercase;
+	padding-left: 0;
+	margin: 15px 0;
+}
+
+#froggyhomecategories-section ul.nav-tabs{
+	height: auto
+}
+
+ul.nav-tabs li {
+	display:inline;
+	list-style:none;
+	font-weight:bold;
+	padding-bottom: 0;
+	float: left }
+
+#froggyhomecategories-section ul.nav-tabs li a{
+	background: -webkit-linear-gradient(#B5BCCA, #7E8592);
+	background: -o-linear-gradient(#B5BCCA, #7E8592);
+	background: -moz-linear-gradient(#B5BCCA, #7E8592);
+	background: linear-gradient(#B5BCCA, #7E8592);
+	border:1px solid #5C6166;
+	border-radius:7px 7px 0 0;
+	color:#E6E6E7;
+	width:auto;
+	padding:2px 15px}
+
+#froggyhomecategories-section ul.nav-tabs li a.selected{
+	color: #fff;
+}
+
+#froggyhomecategories-section ul.nav-tabs li a:hover{
+	text-decoration: none}
+
+#froggyhomecategories-section .tab-content .product_list li{
+	width: 23%;
+	padding:0 1%;
+	float: left
+}
+
