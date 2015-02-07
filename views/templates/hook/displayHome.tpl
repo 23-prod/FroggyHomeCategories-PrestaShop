@@ -18,7 +18,7 @@
 *}
 
 <div id="froggyhomecategories-section" class="clearfix block">
-<p class="title_block">{l s='Les catégories'}</p>
+<p class="title_block">{l s='The categories' mod='froggyhomecategories'}</p>
 	<ul class="idTabs idTabsShort nav nav-tabs clearfix">
         {foreach from=$froggyhomecategories.categories item=category key=k}
 		    <li{if $k eq '0'} class="active"{/if}><a href="#froggyhomecategory-{$category->id_category}" data-toggle="tab"{if $k eq '0'} class="selected"{/if}>{$category->name}</a></li>
