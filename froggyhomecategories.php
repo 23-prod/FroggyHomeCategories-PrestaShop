@@ -36,10 +36,16 @@ class FroggyHomeCategories extends FroggyModule
 	 */
 	public function __construct()
 	{
+		$this->name = 'froggyhomecategories';
+		$this->version = '1.0.0';
+		$this->author = 'Froggy Commerce';
+		$this->tab = 'front_office_features';
+
 		parent::__construct();
 
 		$this->displayName = $this->l('Froggy Home Categories');
 		$this->description = $this->l('Allow you to display a selection of categories');
+		$this->module_key = 'e08f3e47799d094e2bf57cfe60345f4d';
 	}
 
 	/**
