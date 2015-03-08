@@ -36,7 +36,7 @@
 								{if $subcategory.id_image}
 									<img class="replace-2x" src="{$link->getCatImageLink($subcategory.link_rewrite, $subcategory.id_image, 'medium_default')|escape:'html':'UTF-8'}" alt="" />
 									{else}
-									<img class="replace-2x" src="{$img_cat_dir}default-medium_default.jpg" alt="" />
+									<img class="replace-2x" src="{$img_cat_dir|escape:'htmlall':'UTF-8'}default-medium_default.jpg" alt="" />
 								{/if}
 							</a>
 						</div>
