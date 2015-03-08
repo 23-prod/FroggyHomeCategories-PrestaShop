@@ -27,7 +27,7 @@ class FroggyHomeCategoriesHookGetContentProcessor extends FroggyHookProcessor
 	{
 		if (Tools::isSubmit('FHC_CAT_SELECTION'))
 		{
-			Configuration::updateValue('FHC_CAT_SELECTION', json_encode(Tools::getValue('FHC_CAT_SELECTION')));
+			Configuration::updateValue('FHC_CAT_SELECTION', Tools::jsonEncode(Tools::getValue('FHC_CAT_SELECTION')));
 			$this->confirmation = true;
 		}
 	}
@@ -70,7 +70,7 @@ class FroggyHomeCategoriesHookGetContentProcessor extends FroggyHookProcessor
 			'module_dir' => $this->path,
 			'ps_version' => $ps_version,
 			'helper_display' => $this->renderForm(),
-			'FHC_CAT_SELECTION' => json_decode(Configuration::get('FHC_CAT_SELECTION')),
+			'FHC_CAT_SELECTION' => Tools::jsonDecode(Configuration::get('FHC_CAT_SELECTION'), true),
 		);
 		if (isset($this->confirmation))
 			$assign['form_result'] = $this->confirmation;
@@ -78,6 +78,6 @@ class FroggyHomeCategoriesHookGetContentProcessor extends FroggyHookProcessor
 		$this->smarty->assign($this->module->name, $assign);
 
 		// Render form
-		return $this->module->fcdisplay(__FILE__, 'getContent.tpl');;
+		return $this->module->fcdisplay(__FILE__, 'getContent.tpl');
 	}
 }

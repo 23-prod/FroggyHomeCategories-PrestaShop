@@ -25,7 +25,7 @@ class FroggyHomeCategoriesHookDisplayHomeProcessor extends FroggyHookProcessor
 	{
 		// Init var
 		$categories = array();
-		$selected_categories = json_decode(Configuration::get('FHC_CAT_SELECTION'));
+		$selected_categories = Tools::jsonDecode(Configuration::get('FHC_CAT_SELECTION'), true);
 		foreach ($selected_categories as $id_category)
 		{
 			$category = new Category((int)$id_category, (int)$this->context->cookie->id_lang);
@@ -36,7 +36,7 @@ class FroggyHomeCategoriesHookDisplayHomeProcessor extends FroggyHookProcessor
 		// Assign
 		$assign = array(
 			'module_dir' => $this->path,
-			'ps_version' => substr(_PS_VERSION_, 0, 3),
+			'ps_version' => Tools::substr(_PS_VERSION_, 0, 3),
 			'categories' => $categories,
 		);
 		$this->smarty->assign($this->module->name, $assign);
