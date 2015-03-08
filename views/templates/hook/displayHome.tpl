@@ -43,7 +43,7 @@
                     {if $subcategory.description}
 						<div class="cat_desc"><a href="{$link->getCategoryLink($subcategory.id_category, $subcategory.link_rewrite)|escape:'html':'UTF-8'}">{$subcategory.description|strip_tags|truncate:100:'...'}</a></div>
                     {/if}
-					<a class="lnk_more" href="{$link->getCategoryLink($subcategory.id_category, $subcategory.link_rewrite)|escape:'html':'UTF-8'}" title="{l s='View' mod='homefeatured'}">{l s='View' mod='homefeatured'}</a>
+					<a class="lnk_more" href="{$link->getCategoryLink($subcategory.id_category, $subcategory.link_rewrite)|escape:'html':'UTF-8'}" title="{l s='View' mod='froggyhomecategories'}">{l s='View' mod='froggyhomecategories'}</a>
                 </li>
             {/foreach}
             {if empty($category->children)}<li>{l s='No subcategories for this category' mod='froggyhomecategories'}</li>{/if}
