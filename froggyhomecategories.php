@@ -42,7 +42,7 @@ class FroggyHomeCategories extends FroggyModule
 	public function __construct()
 	{
 		$this->name = 'froggyhomecategories';
-		$this->version = '1.0.1';
+		$this->version = '1.0.2';
 		$this->author = 'Froggy Commerce';
 		$this->tab = 'front_office_features';
 
