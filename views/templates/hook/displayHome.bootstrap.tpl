@@ -21,13 +21,13 @@
 
 	<ul class="nav nav-tabs clearfix">
         {foreach from=$froggyhomecategories.categories item=category key=k}
-		    <li{if $k eq '0'} class="active"{/if}><a href="#froggyhomecategory-{$category->id_category}" data-toggle="tab">{$category->name}</a></li>
+		    <li{if $k eq '0'} class="active"{/if}><a href="#froggyhomecategory-{$category->id_category|escape:'htmlall':'UTF-8'}" data-toggle="tab">{$category->name|escape:'htmlall':'UTF-8'}</a></li>
         {/foreach}
     </ul>
 
 	<div class="tab-content">
         {foreach from=$froggyhomecategories.categories item=category key=k}
-        <ul class="grid row homefeatured tab-pane{if $k eq '0'}  active{/if}" id="froggyhomecategory-{$category->id_category}">
+        <ul class="grid row homefeatured tab-pane{if $k eq '0'}  active{/if}" id="froggyhomecategory-{$category->id_category|escape:'htmlall':'UTF-8'}">
             {foreach from=$category->children item=subcategory key=k}
 			    <li class="col-xs-12 col-sm-4 col-md-3">
 					<div class="froggyhomecategories-container-block">
