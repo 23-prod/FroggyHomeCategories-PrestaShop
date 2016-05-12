@@ -19,6 +19,11 @@
  * @license   Unauthorized copying of this file, via any medium is strictly prohibited
  */
 
+/*
+ * Security
+ */
+defined('_PS_VERSION_') || require dirname(__FILE__).'/index.php';
+
 /**
  * Backward function compatibility
  * Need to be called for each module in 1.4
@@ -27,15 +32,17 @@
 /**
  * Get out if the context is already defined
  */
-if (!in_array('FroggyContext', get_declared_classes()))
-	require_once(dirname(__FILE__).'/FroggyContext.php');
+if (!in_array('FroggyContext', get_declared_classes())) {
+    require_once(dirname(__FILE__).'/FroggyContext.php');
+}
 
 /**
  * If not under an object we don't have to set the context
  */
 $var = 'this';
-if (!isset($$var))
-	return;
+if (!isset($$var)) {
+    return;
+}
 
 /**
  * Set variables

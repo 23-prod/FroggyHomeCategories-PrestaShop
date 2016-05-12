@@ -22,54 +22,57 @@
 /*
  * Security
  */
-defined('_PS_VERSION_') || require dirname(__FILE__).'/index.php';
+defined('_PS_VERSION_') || require dirname(__FILE__) . '/index.php';
 
 /*
  * Include Froggy Library
  */
-if (!class_exists('FroggyModule', false)) require_once dirname(__FILE__).'/froggy/FroggyModule.php';
+if (!class_exists('FroggyModule', false)) {
+    require_once dirname(__FILE__) . '/froggy/FroggyModule.php';
+}
 
 class FroggyHomeCategories extends FroggyModule
 {
-	/**
-	 * @var array contains error form postProcess()
-	 */
-	protected $errors = array();
+    /**
+     * @var array contains error form postProcess()
+     */
+    protected $errors = array();
 
-	/**
-	 * Constructor
-	 */
-	public function __construct()
-	{
-		$this->name = 'froggyhomecategories';
-		$this->version = '1.0.1';
-		$this->author = 'Froggy Commerce';
-		$this->tab = 'front_office_features';
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->name = 'froggyhomecategories';
+        $this->version = '1.0.2';
+        $this->author = 'Froggy Commerce';
+        $this->tab = 'front_office_features';
 
-		parent::__construct();
+        parent::__construct();
 
-		$this->displayName = $this->l('Froggy Home Categories');
-		$this->description = $this->l('Allow you to display a selection of categories');
-		$this->module_key = 'e08f3e47799d094e2bf57cfe60345f4d';
-	}
+        $this->displayName = $this->l('Froggy Home Categories');
+        $this->description = $this->l('Allow you to display a selection of categories');
+        $this->module_key = 'e08f3e47799d094e2bf57cfe60345f4d';
+    }
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getContent()
-	{
-		return $this->hookGetContent(array());
-	}
+    /**
+     * {@inheritdoc}
+     */
+    public function getContent()
+    {
+        return $this->hookGetContent(array());
+    }
 
-	/*
-	 * Retrocompat 1.4
-	 */
-	public function hookHeader($params)
-	{
-		return $this->hookDisplayHeader($params);
-	}
-	public function hookHome($params)
-	{
-		return $this->hookDisplayHome($params);
-	}
+    /*
+     * Retrocompat 1.4
+     */
+    public function hookHeader($params)
+    {
+        return $this->hookDisplayHeader($params);
+    }
+
+    public function hookHome($params)
+    {
+        return $this->hookDisplayHome($params);
+    }
 }

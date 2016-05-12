@@ -21,26 +21,25 @@
 
 class FroggyHomeCategoriesHookDisplayHomeProcessor extends FroggyHookProcessor
 {
-	public function run()
-	{
-		// Init var
-		$categories = array();
-		$selected_categories = Tools::jsonDecode(Configuration::get('FHC_CAT_SELECTION'), true);
-		foreach ($selected_categories as $id_category)
-		{
-			$category = new Category((int)$id_category, (int)$this->context->cookie->id_lang);
-			$category->children = $category->getSubCategories((int)$this->context->cookie->id_lang, true);
-			$categories[] = $category;
-		}
+    public function run()
+    {
+        // Init var
+        $categories = array();
+        $selected_categories = Tools::jsonDecode(Configuration::get('FHC_CAT_SELECTION'), true);
+        foreach ($selected_categories as $id_category) {
+            $category = new Category((int)$id_category, (int)$this->context->cookie->id_lang);
+            $category->children = $category->getSubCategories((int)$this->context->cookie->id_lang, true);
+            $categories[] = $category;
+        }
 
-		// Assign
-		$assign = array(
-			'module_dir' => $this->path,
-			'ps_version' => Tools::substr(_PS_VERSION_, 0, 3),
-			'categories' => $categories,
-		);
-		$this->smarty->assign($this->module->name, $assign);
+        // Assign
+        $assign = array(
+            'module_dir' => $this->path,
+            'ps_version' => Tools::substr(_PS_VERSION_, 0, 3),
+            'categories' => $categories,
+        );
+        $this->smarty->assign($this->module->name, $assign);
 
-		return $this->module->fcdisplay(__FILE__, 'displayHome.tpl');
-	}
+        return $this->module->fcdisplay(__FILE__, 'displayHome.tpl');
+    }
 }

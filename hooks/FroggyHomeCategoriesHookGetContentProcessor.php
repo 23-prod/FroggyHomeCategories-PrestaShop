@@ -21,63 +21,63 @@
 
 class FroggyHomeCategoriesHookGetContentProcessor extends FroggyHookProcessor
 {
-	public $confirmation;
+    public $confirmation;
 
-	public function processConfiguration()
-	{
-		if (Tools::isSubmit('FHC_CAT_SELECTION'))
-		{
-			Configuration::updateValue('FHC_CAT_SELECTION', Tools::jsonEncode(Tools::getValue('FHC_CAT_SELECTION')));
-			$this->confirmation = true;
-		}
-	}
+    public function processConfiguration()
+    {
+        if (Tools::isSubmit('FHC_CAT_SELECTION')) {
+            Configuration::updateValue('FHC_CAT_SELECTION', Tools::jsonEncode(Tools::getValue('FHC_CAT_SELECTION')));
+            $this->confirmation = true;
+        }
+    }
 
-	public function renderForm()
-	{
-		$tree = $this->module->renderCategoriesTree(Category::getRootCategory()->id, 'FHC_CAT_SELECTION', 'FHC_CAT_SELECTION');
+    public function renderForm()
+    {
+        $tree = $this->module->renderCategoriesTree(Category::getRootCategory()->id, 'FHC_CAT_SELECTION', 'FHC_CAT_SELECTION');
 
-		$configuration = array(
-			'key' => 'configuration',
-			'label' => $this->module->l('Configuration'),
-			'form' => array(
-				'Options' => array(
-					'label' => $this->module->l('Options'),
-					'fields' => array(
-						array('type' => 'custom', 'name' => 'FHC_CAT_SELECTION', 'label' => $this->module->l('Selected categories:'), 'html' => $tree),
-					)
-				),
-			)
-		);
+        $configuration = array(
+            'key' => 'configuration',
+            'label' => $this->module->l('Configuration'),
+            'form' => array(
+                'Options' => array(
+                    'label' => $this->module->l('Options'),
+                    'fields' => array(
+                        array('type' => 'custom', 'name' => 'FHC_CAT_SELECTION', 'label' => $this->module->l('Selected categories:'), 'html' => $tree),
+                    )
+                ),
+            )
+        );
 
-		$helper = new FroggyHelperFormList();
-		$helper->setFormUrl($this->module->configuration_url);
-		$helper->setContext($this->context);
-		$helper->setModule($this->module);
-		$helper->setConfiguration($configuration);
-		$helper->prefillFormFields();
+        $helper = new FroggyHelperFormList();
+        $helper->setFormUrl($this->module->configuration_url);
+        $helper->setContext($this->context);
+        $helper->setModule($this->module);
+        $helper->setConfiguration($configuration);
+        $helper->prefillFormFields();
 
-		return $helper->render();
-	}
+        return $helper->render();
+    }
 
-	public function run()
-	{
-		// Post Process
-		$this->processConfiguration();
+    public function run()
+    {
+        // Post Process
+        $this->processConfiguration();
 
-		// Init var
-		$ps_version = Tools::substr(_PS_VERSION_, 0, 3);
-		$assign = array(
-			'module_dir' => $this->path,
-			'ps_version' => $ps_version,
-			'helper_display' => $this->renderForm(),
-			'FHC_CAT_SELECTION' => Tools::jsonDecode(Configuration::get('FHC_CAT_SELECTION'), true),
-		);
-		if (isset($this->confirmation))
-			$assign['form_result'] = $this->confirmation;
+        // Init var
+        $ps_version = Tools::substr(_PS_VERSION_, 0, 3);
+        $assign = array(
+            'module_dir' => $this->path,
+            'ps_version' => $ps_version,
+            'helper_display' => $this->renderForm(),
+            'FHC_CAT_SELECTION' => Tools::jsonDecode(Configuration::get('FHC_CAT_SELECTION'), true),
+        );
+        if (isset($this->confirmation)) {
+            $assign['form_result'] = $this->confirmation;
+        }
 
-		$this->smarty->assign($this->module->name, $assign);
+        $this->smarty->assign($this->module->name, $assign);
 
-		// Render form
-		return $this->module->fcdisplay(__FILE__, 'getContent.tpl');
-	}
+        // Render form
+        return $this->module->fcdisplay(__FILE__, 'getContent.tpl');
+    }
 }
