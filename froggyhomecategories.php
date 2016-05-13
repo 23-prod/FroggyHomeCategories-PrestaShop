@@ -38,15 +38,15 @@ class FroggyHomeCategories extends FroggyModule
      */
     protected $errors = array();
 
-	/**
-	 * Constructor
-	 */
-	public function __construct()
-	{
-		$this->name = 'froggyhomecategories';
-		$this->version = '1.0.2';
-		$this->author = 'Froggy Commerce';
-		$this->tab = 'front_office_features';
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->name = 'froggyhomecategories';
+        $this->version = '1.0.2';
+        $this->author = 'Froggy Commerce';
+        $this->tab = 'front_office_features';
 
         parent::__construct();
 
